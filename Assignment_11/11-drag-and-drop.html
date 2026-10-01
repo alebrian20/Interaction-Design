@@ -68,9 +68,10 @@ html, body {
     <script>
         $('#tardis').draggable();
 
-        $('#blackhole').droppable({
-            drop: destroy
-        });
+       $('#blackhole').droppable({
+    tolerance: 'pointer',
+    drop: destroy
+});
 
         function destroy() {
             $('#tardis').animate(
