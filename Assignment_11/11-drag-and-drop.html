@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Exercise 11 - Drag and Drop</title>
+
+    <style>
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#space {
+    width: 100vw;
+    height: 100vh;
+    background: url("wormhole.jpg") center center / cover no-repeat;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+        #blackhole {
+            width: 400px;
+            height: 300px;
+            background: transparent;
+            position: absolute;
+            top: 50px;
+            right: 100px;
+        }
+
+        #tardis {
+            width: 200px;
+            height: 200px;
+            background: url("tardis.png");
+            position: absolute;
+            top: 100px;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+
+            100% {
+                transform: rotate(720deg) scale(.01);
+            }
+        }
+
+        .animated {
+            animation: spin 3s ease-out;
+            animation-fill-mode: forwards;
+        }
+    </style>
+
+    <script src="jquery.min.js"></script>
+    <script src="jquery-ui.min.js"></script>
+</head>
+
+<body>
+
+    <div id="space">
+        <div id="blackhole"></div>
+        <div id="tardis"></div>
+    </div>
+
+    <script>
+        $('#tardis').draggable();
+
+        $('#blackhole').droppable({
+            drop: destroy
+        });
+
+        function destroy() {
+            $('#tardis').animate(
+                {
+                    top: '166px',
+                    left: '450px'
+                },
+                3000,
+                'easeOutQuad'
+            );
+
+            $('#tardis').addClass('animated');
+        }
+    </script>
+
+</body>
+</html>
