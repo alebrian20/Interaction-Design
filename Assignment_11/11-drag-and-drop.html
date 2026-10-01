@@ -24,7 +24,7 @@ html, body {
         #blackhole {
             width: 400px;
             height: 300px;
-            background: rgba(0, 255, 0, 0.4);
+            background: transparent;
             position: absolute;
             top: 50px;
             right: 100px;
@@ -74,17 +74,19 @@ html, body {
 });
 
         function destroy() {
-            $('#tardis').animate(
-                {
-                    top: '166px',
-                    left: '450px'
-                },
-                3000,
-                'easeOutQuad'
-            );
+    var hole = $('#blackhole').position();
 
-            $('#tardis').addClass('animated');
-        }
+    $('#tardis').animate(
+        {
+            top: hole.top + 50,
+            left: hole.left + 100
+        },
+        3000,
+        'easeOutQuad'
+    );
+
+    $('#tardis').addClass('animated');
+}
     </script>
 
 </body>
