@@ -81,19 +81,26 @@ html, body {
     drop: destroy
 });
 
-        function destroy() {
-    var hole = $('#blackhole').position();
+      function destroy() {
+    var blackhole = $('#blackhole');
+    var tardis = $('#tardis');
 
-    $('#tardis').animate(
+    var left = blackhole.position().left +
+               (blackhole.outerWidth() - tardis.outerWidth()) / 2;
+
+    var top = blackhole.position().top +
+              (blackhole.outerHeight() - tardis.outerHeight()) / 2;
+
+    tardis.animate(
         {
-            top: hole.top + 50,
-            left: hole.left + 100
+            top: top,
+            left: left
         },
         3000,
         'easeOutQuad'
     );
 
-    $('#tardis').addClass('animated');
+    tardis.addClass('animated');
 }
     </script>
 
