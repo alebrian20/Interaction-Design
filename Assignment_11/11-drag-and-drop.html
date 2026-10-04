@@ -73,36 +73,27 @@ html, body {
         <div id="tardis"></div>
     </div>
 
-    <script>
-        $('#tardis').draggable();
+   <script>
+    $('#tardis').draggable();
 
-       $('#blackhole').droppable({
-    tolerance: 'pointer',
-    drop: destroy
-});
+    $('#blackhole').droppable({
+        tolerance: 'pointer',
+        drop: destroy
+    });
 
-      function destroy() {
-    var blackhole = $('#blackhole');
-    var tardis = $('#tardis');
+    function destroy() {
+        $('#tardis').animate(
+            {
+                top: '350px',
+                left: '830px'
+            },
+            3000,
+            'easeOutQuad'
+        );
 
-    var left = blackhole.position().left +
-               (blackhole.outerWidth() - tardis.outerWidth()) / 2;
-
-    var top = blackhole.position().top +
-              (blackhole.outerHeight() - tardis.outerHeight()) / 2;
-
-    tardis.animate(
-        {
-            top: top,
-            left: left
-        },
-        3000,
-        'easeOutQuad'
-    );
-
-    tardis.addClass('animated');
-}
-    </script>
+        $('#tardis').addClass('animated');
+    }
+</script>
 
 </body>
 </html>
